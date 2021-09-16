@@ -128,7 +128,7 @@ public class LeerDatos {
 
 //	Array
 //	for
-
+/*
 		PersonDTO person1 = new PersonDTO();
 		person1.setName("Luis Conde23432");
 		person1.setEmail("luis@gmail.com");
@@ -152,7 +152,7 @@ public class LeerDatos {
 		person3.setSex('H');
 		person3.setWeights(105.5);
 		person3.setHeight(1.75);
-
+*/
 //	   Perdida de presición
 //	   byte -> short
 //	   short -> int
@@ -160,34 +160,61 @@ public class LeerDatos {
 //	   long
 
 		// Leer todo lo que venga de consola
+                PersonDTO user = new PersonDTO();
 		Scanner in = new Scanner(System.in);
-
+                ArrayList<PersonDTO> people = new ArrayList<>();
+                //int nEr=0;
 		System.out.println("Ingrese número de personas a registrar");
 		int count = in.nextInt();
-		in.next(); // atrapar el enter
-		
+		//in.next(); // atrapar el enter
 		String text = in.nextLine();
 
-		ArrayList<PersonDTO> people = new ArrayList<>();
-		people.add(person1);
+		
+		/*people.add(person1);
 		people.add(person2);
 		people.add(person3);
-		
-//		[0,1,2]
-		for (int i = 0; i < people.size(); i++) {
-			
-			people.get(i).setName( (validarLetras(people.get(i).getName())? people.get(i).getName(): "Dato incorrecto") );
-			people.get(i).setEmail( (validarLetras(people.get(i).getEmail())? people.get(i).getEmail(): "Dato incorrecto") );
-			
-//			people.get(i);
+		*/
+//		
+		for (int i = 0; i < count; i++) {
+                        System.out.println("Nombre: ");
+			user.setName(in.nextLine());                      
+                        /*if (!validarLetras(user.getName())){
+                         user.setName("Error");
+                         nEr++;
+                        }*/
+                        //user.setName((validarLetras(user.getName())? user.getName(): "Dato incorrecto") );
+                        System.out.println("Edad: ");
+                        user.setAge(in.nextByte());
+                        System.out.println("Sexo");
+                        System.out.println("(M)asculino,(F)emenino, (N)o Definido: ");
+                        user.setSex(in.next().charAt(0));
+                        text = in.nextLine();
+                        System.out.println("Email: ");
+                        user.setEmail(in.nextLine());
+                        System.out.println("Telefono: ");
+                        user.setPhone(in.nextLine());
+                        System.out.println("Altura (cm): ");
+                        user.setHeight(in.nextDouble());
+                        System.out.println("Peso (kg): ");
+                        user.setWeight(in.nextDouble());
+                        text = in.nextLine();
+                         
+                        
+			//people.get(i).setName( (validarLetras(people.get(i).getName())? people.get(i).getName(): "Dato incorrecto") );
+			//people.get(i).setEmail( (validarLetras(people.get(i).getEmail())? people.get(i).getEmail(): "Dato incorrecto") );
+			//people.get(i);
 //			validaObjeto(people.get(i));
-			
+			//people.add(user);
+                        people.add(i, user);
 		}
 		
+                /*for (int i=0;i<people.size();i++){
+                 System.out.println(people.get(i));
+                }*/
 		for (PersonDTO personDTO : people) {
 			System.out.println(personDTO);
 		}
-
+                //System.out.println("Errores encontrados: " +nEr);
 	}
 
 	public static boolean validarLetras(String datos) {
